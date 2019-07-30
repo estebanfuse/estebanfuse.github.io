@@ -440,9 +440,9 @@ var shaderProgram;
 
         mat4.translate(mvMatrix, [0.0, 0.0, z]);
             
-        mat4.rotate(mvMatrix, degToRad(xRot), [1, 0, 0]);
+        mat4.rotate(mvMatrix, degToRad(xRot-offsetX), [1, 0, 0]);
 
-        mat4.rotate(mvMatrix, degToRad(yRot), [0, 1, 0]);
+        mat4.rotate(mvMatrix, degToRad(yRot--offsetY), [0, 1, 0]);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
@@ -529,8 +529,8 @@ gyroscope.addEventListener('reading', e => {
   console.log("Angular velocity along the Y-axis" + gyroscope.y);
   console.log("Angular velocity along the Z-axis" + gyroscope.z);
 
-    xRot+=gyroscope.x*1.5-offsetX;
-    yRot+=gyroscope.y*1.5-offsetY;
+    xRot+=gyroscope.x*1.5;
+    yRot+=gyroscope.y*1.5;
     
 });
         
