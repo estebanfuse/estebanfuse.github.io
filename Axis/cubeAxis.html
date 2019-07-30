@@ -442,7 +442,7 @@ var shaderProgram;
             
         mat4.rotate(mvMatrix, degToRad(xRot-offsetX), [1, 0, 0]);
 
-        mat4.rotate(mvMatrix, degToRad(yRot--offsetY), [0, 1, 0]);
+        mat4.rotate(mvMatrix, degToRad(yRot-offsetY), [0, 1, 0]);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer);
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, cubeVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0);
