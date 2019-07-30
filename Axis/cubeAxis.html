@@ -519,7 +519,8 @@ var shaderProgram;
     }
 
         
-   
+   let offsetX=0;
+   let offsetY=0;
         
 let gyroscope = new Gyroscope({frequency: 60});
 
@@ -528,8 +529,8 @@ gyroscope.addEventListener('reading', e => {
   console.log("Angular velocity along the Y-axis" + gyroscope.y);
   console.log("Angular velocity along the Z-axis" + gyroscope.z);
 
-    xRot+=gyroscope.x*2;
-    yRot+=gyroscope.y*2;
+    xRot+=gyroscope.x*1.5-offsetX;
+    yRot+=gyroscope.y*1.5-offsetY;
     
 });
         
@@ -544,6 +545,11 @@ accelerometer.addEventListener('reading', e => {
 accelerometer.start();
         
 gyroscope.start();
+        
+function resetOrientation(){
+    offsetX=xRot;
+    offsetY=yRot;
+}
         
   function tick() {
     requestAnimFrame(tick);
@@ -583,6 +589,8 @@ gyroscope.start();
 <center>
   <canvas id="lesson01-canvas" style="border: none;margin-top: 40px" width="500" height="500"></canvas>
      <br>
+    
+     <button id="resetButton" onclick="resetOrientation()">Reset Orientation</button> <br>   
     
     <br>
     <input id="lighting" checked="checked" type="checkbox"> Use lighting<br>
